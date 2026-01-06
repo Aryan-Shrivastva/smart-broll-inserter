@@ -1,0 +1,85 @@
+{
+    "aroll_duration_sec": 40.5,
+    "transcript_segments": [
+        {
+            "start_sec": 0,
+            "end_sec": 4.199999809265137,
+            "text": "आपको पता है, मुंबई जैसे सिटी में हम रोज बाहर का खाना खा लेते हैं।"
+        },
+        {
+            "start_sec": 4.699999809265137,
+            "end_sec": 7.199999809265137,
+            "text": "टाइम कम होता है, ऑप्शन ज्यादा होते हैं।"
+        },
+        {
+            "start_sec": 7.699999809265137,
+            "end_sec": 12,
+            "text": "बड़ एक चीज जो क्वाइटली इंपाक्ट करती है, वो है फूड क्वालिटी।"
+        },
+        {
+            "start_sec": 12.5,
+            "end_sec": 16,
+            "text": "आपको पता है, मुंबई जैसे सिटी में हम रोज बाहर का खा लेते हैं।"
+        },
+        {
+            "start_sec": 16.5,
+            "end_sec": 21,
+            "text": "ये सब इमीजिटली फील नहीं होता, बड़ धीरे धीरे हेल्थ पे एफेक्ट करता है।"
+        },
+        {
+            "start_sec": 21.5,
+            "end_sec": 23.5,
+            "text": "इसलिए अवेरनिस ज़रूरी है।"
+        },
+        {
+            "start_sec": 24,
+            "end_sec": 27.5,
+            "text": "टेस्ट इम्पॉर्टंट है, लेकिन सेफ्टी उससे भी ज्यादा।"
+        },
+        {
+            "start_sec": 28,
+            "end_sec": 33,
+            "text": "क्लीन प्लेसिस चूज करना, फ्रेश फूड खाना और बेसिक हाईजीन नोटिस करना,"
+        },
+        {
+            "start_sec": 33,
+            "end_sec": 37,
+            "text": "ये स्मॉल स्टेप्स आगे जाके बिग प्रॉबलम से बचा सकते हैं।"
+        },
+        {
+            "start_sec": 37,
+            "end_sec": 40.5,
+            "text": "खाना इंजॉय करो बड़ गॉन्शिस्ली।"
+        }
+    ],
+    "insertions": [
+        {
+            "start_sec": 5.199999809265137,
+            "duration_sec": 2,
+            "broll_id": "broll_2",
+            "confidence": 0.16688562427617964,
+            "reason": "Semantic match: Indoor shot of takeaway food containers placed on a table near a window, natural daylight, calm and ..."
+        },
+        {
+            "start_sec": 13,
+            "duration_sec": 2.5,
+            "broll_id": "broll_1",
+            "confidence": 0.3073268581542808,
+            "reason": "Semantic match: Mumbai street food context shot with closed or empty stalls, utensils and signboards visible, no peo..."
+        },
+        {
+            "start_sec": 24.5,
+            "duration_sec": 2.5,
+            "broll_id": "broll_6",
+            "confidence": 0.10567529663594599,
+            "reason": "Semantic match: Minimal indoor dining table near a window with a glass of water and fresh fruits, soft sunlight crea..."
+        },
+        {
+            "start_sec": 33.5,
+            "duration_sec": 3,
+            "broll_id": "broll_3",
+            "confidence": 0.18197269998661136,
+            "reason": "Semantic match: Close-up of uncovered food kept at a stall counter, subtle dust particles visible in light, highligh..."
+        }
+    ]
+}

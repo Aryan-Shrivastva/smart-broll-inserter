@@ -1,0 +1,39 @@
+{
+    "a_roll": {
+      "url": "https://fzuudapb1wvjxbrr.public.blob.vercel-storage.com/food_quality_ugc/a_roll.mp4",
+      "metadata": "Young Indian woman (mid-20s) with a calm, aware tone, speaking in Hinglish, delivering a food-quality awareness message."
+    },
+    "b_rolls": [
+      {
+        "id": "broll_1",
+        "metadata": "Mumbai street food context shot with closed or empty stalls, utensils and signboards visible, no people present. Establishes everyday food culture in an urban Indian city.",
+        "url": "https://fzuudapb1wvjxbrr.public.blob.vercel-storage.com/food_quality_ugc/broll_1.mp4"
+      },
+      {
+        "id": "broll_2",
+        "metadata": "Indoor shot of takeaway food containers placed on a table near a window, natural daylight, calm and relatable everyday eating scenario with no humans in frame.",
+        "url": "https://fzuudapb1wvjxbrr.public.blob.vercel-storage.com/food_quality_ugc/broll_2.mp4"
+      },
+      {
+        "id": "broll_3",
+        "metadata": "Close-up of uncovered food kept at a stall counter, subtle dust particles visible in light, highlighting hygiene concerns in a realistic, non-dramatic way.",
+        "url": "https://fzuudapb1wvjxbrr.public.blob.vercel-storage.com/food_quality_ugc/broll_3.mp4"
+      },
+      {
+        "id": "broll_4",
+        "metadata": "Clean indoor kitchen counter with freshly prepared food, vegetables and utensils neatly arranged, warm lighting showing a hygienic alternative.",
+        "url": "https://fzuudapb1wvjxbrr.public.blob.vercel-storage.com/food_quality_ugc/broll_4.mp4"
+      },
+      {
+        "id": "broll_5",
+        "metadata": "Organized indoor cafe or restaurant food display area, clean surfaces and professional setup, no staff or customers visible, reinforcing conscious food choices.",
+        "url": "https://fzuudapb1wvjxbrr.public.blob.vercel-storage.com/food_quality_ugc/broll_5.mp4"
+      },
+      {
+        "id": "broll_6",
+        "metadata": "Minimal indoor dining table near a window with a glass of water and fresh fruits, soft sunlight creating a calm, reflective closing shot focused on health.",
+        "url": "https://fzuudapb1wvjxbrr.public.blob.vercel-storage.com/food_quality_ugc/broll_6.mp4"
+      }
+    ]
+  }
+
