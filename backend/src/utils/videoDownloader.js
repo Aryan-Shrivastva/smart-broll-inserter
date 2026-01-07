@@ -17,7 +17,7 @@ export async function downloadVideo(url) {
     }
 
     const arrayBuffer = await response.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
+    const buffer = Buffer.from(arrayBuffer); // 
     
     console.log(`Downloaded ${buffer.length} bytes`);
     return buffer;

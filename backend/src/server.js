@@ -24,9 +24,10 @@ app.use(cors());
 // Configure Multer for file uploads (stored in memory)
 const upload = multer({ storage: multer.memoryStorage() });
 
+//pipeline(includes transcribe, generate embeddings, plan insertions)
 // Shared helper to generate a plan from an A-roll buffer and B-roll metadata
 async function generatePlanFromArollBuffer(arollBuffer, b_rolls) {
-  // Step 2: Transcribe A-roll video
+  //Transcribe A-roll video
   console.log("\n[Step 2/5] Transcribing A-roll video with OpenAI Whisper...");
   const transcriptResult = await transcribeVideo(arollBuffer, "a_roll.mp4");
 
@@ -36,7 +37,7 @@ async function generatePlanFromArollBuffer(arollBuffer, b_rolls) {
 
   console.log(`Transcribed ${transcriptResult.segments.length} segments`);
 
-  // Step 3: Generate embeddings for transcript segments
+  //Generate embeddings for transcript segments
   console.log("\n[Step 3/5] Generating embeddings for transcript segments...");
   const segmentTexts = transcriptResult.segments.map((seg) => seg.text);
   const segmentEmbeddings = await getEmbeddings(segmentTexts);
@@ -47,7 +48,7 @@ async function generatePlanFromArollBuffer(arollBuffer, b_rolls) {
     embedding: segmentEmbeddings[idx],
   }));
 
-  // Step 4: Generate embeddings for B-roll metadata
+  //Generate embeddings for B-roll metadata
   console.log("\n[Step 4/5] Generating embeddings for B-roll metadata...");
   const brollMetadataTexts = b_rolls.map((broll) => broll.metadata || "");
   const brollEmbeddings = await getEmbeddings(brollMetadataTexts);
@@ -59,7 +60,7 @@ async function generatePlanFromArollBuffer(arollBuffer, b_rolls) {
     embedding: brollEmbeddings[idx],
   }));
 
-  // Step 5: Plan insertions using semantic matching
+  //Plan insertions using semantic matching
   console.log("\n[Step 5/5] Planning B-roll insertions using semantic matching...");
   const insertions = planInsertions(
     segmentsWithEmbeddings,
@@ -89,6 +90,7 @@ async function generatePlanFromArollBuffer(arollBuffer, b_rolls) {
   };
 }
 
+
 app.get('/', (req, res) => {
   res.send('Smart B-Roll Inserter API. Try /api/health');
 });
@@ -108,7 +110,7 @@ app.post("/api/plan", async (req, res) => {
   try {
     let videoConfig;
 
-    // Check if video URLs are provided in request body
+    // Checks if video URLs are provided in request body
     if (req.body && req.body.a_roll) {
       videoConfig = req.body;
     } else {
@@ -177,7 +179,6 @@ app.post(
           .json({ error: "A-roll video file (field 'aroll') is required." });
       }
 
-      // For this assignment, we still use metadata from video_url.json for B-roll understanding.
       const videoUrlPath = join(__dirname, "../../video_url.json");
       if (!fs.existsSync(videoUrlPath)) {
         return res.status(400).json({
