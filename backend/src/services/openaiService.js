@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY, //openai client object
 });
 
 /**
@@ -22,24 +22,21 @@ const openai = new OpenAI({
 export async function transcribeVideo(videoBuffer, filename = "video.mp4") {
   let tempFilePath = null;
   try {
-    // Create a temporary file for OpenAI API
-    // OpenAI SDK requires a File object, which works best with an actual file
+    // Creates a temporary file for OpenAI API
     tempFilePath = join(__dirname, "../../temp_video.mp4");
     fs.writeFileSync(tempFilePath, videoBuffer);
 
     console.log("Calling OpenAI Whisper API for transcription...");
 
-    // Create a File object from Buffer (Node.js 18+ supports File API)
-    // If File API is not available, we'll use the temp file path approach
+
     let file;
     try {
-      // Try to create File from Buffer (Node.js 18+)
+      // Trying to create File from Buffer
       file = new File([videoBuffer], filename, {
         type: "video/mp4",
       });
     } catch (e) {
-      // Fallback: use fs.createReadStream with the temp file
-      // OpenAI SDK accepts File, but we can also pass a stream-like object
+      // Fallback: using fs.createReadStream with the temp file
       const fileStream = fs.createReadStream(tempFilePath);
       file = fileStream;
     }
@@ -52,7 +49,7 @@ export async function transcribeVideo(videoBuffer, filename = "video.mp4") {
       timestamp_granularities: ["segment"], // Get segment-level timestamps
     });
 
-    // Clean up temp file
+    //temp file clean up
     if (tempFilePath && fs.existsSync(tempFilePath)) {
       try {
         fs.unlinkSync(tempFilePath);
