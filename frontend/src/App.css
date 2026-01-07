@@ -46,11 +46,47 @@ body {
 
 .controls {
   display: flex;
+  flex-direction: column;
+  gap: 20px;
   justify-content: center;
   padding: 20px;
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.upload-section,
+.demo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.upload-help {
+  color: #555;
+  font-size: 13px;
+}
+
+.upload-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.upload-field label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.file-name {
+  font-size: 13px;
+  color: #555;
+}
+
+.controls-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
 }
 
 .generate-btn {
@@ -72,6 +108,14 @@ body {
 .generate-btn:disabled {
   background-color: #6c757d;
   cursor: not-allowed;
+}
+
+.generate-btn.secondary {
+  background-color: #28a745;
+}
+
+.generate-btn.secondary:hover:not(:disabled) {
+  background-color: #1e7e34;
 }
 
 .error {

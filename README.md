@@ -13,12 +13,12 @@ The system uses OpenAI's Whisper API for transcription and embeddings for semant
 
 ## Features
 
-- ✅ **A-Roll Understanding**: Extracts transcript with sentence-level timestamps using OpenAI Whisper
-- ✅ **B-Roll Understanding**: Uses metadata descriptions to understand B-roll content
-- ✅ **Semantic Matching**: Uses cosine similarity on embeddings to match A-roll segments with B-roll clips
-- ✅ **Intelligent Planning**: Avoids over-insertion, respects timing gaps, and prefers high-value moments
-- ✅ **React Frontend**: Simple UI to trigger plan generation and view results
-- ✅ **RESTful API**: Clean backend API that returns structured JSON timeline plans
+- **A-Roll Understanding**: Extracts transcript with sentence-level timestamps using OpenAI Whisper
+- **B-Roll Understanding**: Uses metadata descriptions to understand B-roll content
+- **Semantic Matching**: Uses cosine similarity on embeddings to match A-roll segments with B-roll clips
+- **Intelligent Planning**: Avoids over-insertion, respects timing gaps, and prefers high-value moments
+- **React Frontend**: Simple UI to trigger plan generation and view results
+- **RESTful API**: Clean backend API that returns structured JSON timeline plans
 
 ## Prerequisites
 

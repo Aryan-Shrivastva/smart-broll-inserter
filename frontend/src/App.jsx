@@ -5,21 +5,26 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [plan, setPlan] = useState(null)
   const [error, setError] = useState(null)
+  const [arollFile, setArollFile] = useState(null)
+  const [brollFiles, setBrollFiles] = useState([])
 
-  const generatePlan = async () => {
+  const handleArollChange = (event) => {
+    const file = event.target.files?.[0] || null
+    setArollFile(file)
+  }
+
+  const handleBrollChange = (event) => {
+    const files = Array.from(event.target.files || [])
+    setBrollFiles(files)
+  }
+
+  const callApiAndSetPlan = async (requestPromise) => {
     setLoading(true)
     setError(null)
     setPlan(null)
 
     try {
-      const response = await fetch('http://localhost:4000/api/plan', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({}),
-      })
-
+      const response = await requestPromise
       if (!response.ok) {
         throw new Error(`Failed to generate plan: ${response.statusText}`)
       }
@@ -32,6 +37,38 @@ function App() {
     } finally {
       setLoading(false)
     }
+  }
+
+  const generateFromUpload = async () => {
+    if (!arollFile) {
+      setError('Please upload an A-roll video to use this option, or use the demo video button below.')
+      return
+    }
+
+    const formData = new FormData()
+    formData.append('aroll', arollFile)
+    brollFiles.forEach((file) => {
+      formData.append('brolls', file)
+    })
+
+    await callApiAndSetPlan(
+      fetch('http://localhost:4000/api/plan/upload', {
+        method: 'POST',
+        body: formData,
+      })
+    )
+  }
+
+  const generateFromDemo = async () => {
+    await callApiAndSetPlan(
+      fetch('http://localhost:4000/api/plan', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+      })
+    )
   }
 
   const formatTime = (seconds) => {
@@ -49,13 +86,68 @@ function App() {
 
       <main className="main">
         <div className="controls">
-          <button 
-            onClick={generatePlan} 
-            disabled={loading}
-            className="generate-btn"
-          >
-            {loading ? 'Generating Plan...' : 'Generate Plan'}
-          </button>
+          <div className="upload-section">
+            <h2>Upload Your Clips </h2>
+            <p className="upload-help">
+              Upload an A-roll video and optional B-roll clips. Use the button below to
+              generate a plan from your uploads. If you prefer, you can ignore this and
+              use the built-in demo video instead.
+            </p>
+
+            <div className="upload-field">
+              <label htmlFor="aroll-input">A-roll video</label>
+              <input
+                id="aroll-input"
+                type="file"
+                accept="video/*"
+                onChange={handleArollChange}
+              />
+              {arollFile && <p className="file-name">Selected: {arollFile.name}</p>}
+            </div>
+
+            <div className="upload-field">
+              <label htmlFor="broll-input">B-roll clips (optional, multiple)</label>
+              <input
+                id="broll-input"
+                type="file"
+                accept="video/*"
+                multiple
+                onChange={handleBrollChange}
+              />
+              {brollFiles.length > 0 && (
+                <p className="file-name">
+                  Selected B-rolls: {brollFiles.map((f) => f.name).join(', ')}
+                </p>
+              )}
+            </div>
+
+            <div className="controls-button">
+              <button 
+                onClick={generateFromUpload} 
+                disabled={loading}
+                className="generate-btn"
+              >
+                {loading ? 'Generating from Upload...' : 'Generate from Upload'}
+              </button>
+            </div>
+          </div>
+
+          <div className="demo-section">
+            <h2>Or Use Demo Video</h2>
+            <p className="upload-help">
+              Click below to generate a plan using the provided demo A-roll and B-roll
+              clips.
+            </p>
+            <div className="controls-button">
+              <button 
+                onClick={generateFromDemo} 
+                disabled={loading}
+                className="generate-btn secondary"
+              >
+                {loading ? 'Generating from Demo...' : 'Generate from Demo'}
+              </button>
+            </div>
+          </div>
         </div>
 
         {error && (
