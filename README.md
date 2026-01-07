@@ -24,10 +24,7 @@ The system uses OpenAI's Whisper API for transcription and embeddings for semant
 
 - **Node.js** (v18 or higher recommended)
 - **npm** (comes with Node.js)
-- **OpenAI API Key** (with billing enabled)
-  - Sign up at https://platform.openai.com
-  - Add payment method (required even for free credits)
-  - Get your API key from https://platform.openai.com/api-keys
+
 
 ## Project Structure
 
